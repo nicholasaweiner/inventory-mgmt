@@ -14,6 +14,8 @@ namespace consoleApp
             var frameBodySpace = new FrameBodySpace();
             var frameFooter = new FrameFooter();
             var applicationCommands = new ApplicationCommands();
+            int leftSpaces = 4;
+            string leftPadding = new string(' ', leftSpaces);
 
 
             // Default Application Frame - Header
@@ -38,17 +40,18 @@ namespace consoleApp
             {
                 var charFreq = el.ItemType.Count();
                 int multipler = 65;
-                int numSpaces = multipler - charFreq;
-                string space = new string(' ', numSpaces);
+                int rightSpaces = multipler - charFreq;
+                string rightPadding = new string(' ', rightSpaces);
 
-                Console.WriteLine($"│    {el.Id} - {el.ItemType}" + $"{space}|");
+
+                Console.WriteLine($"│{leftPadding}{el.Id} - {el.ItemType}{rightPadding}|");
             }
 
             // Frame Body Space
             frameBodySpace.Run();
 
             // Frame Return to Main Menu 
-            Console.WriteLine($"│    { Convert.ToInt32(items.Count) + 1} - Return to Main Menu                                              |");
+            Console.WriteLine($"│{leftPadding}{ Convert.ToInt32(items.Count) + 1} - Return to Main Menu                                              |");
 
 
             // Default Application Frame Footer

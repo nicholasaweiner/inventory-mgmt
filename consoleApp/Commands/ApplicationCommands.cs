@@ -12,34 +12,72 @@ namespace consoleApp.Commands
     {
         public class AddItem
         {
-            private string heading;
-            private string subheading;
+            private string head;
+            private string subhead;
 
             public AddItem(string head, string subhead)
             {
-                heading = head;
-                subheading = subhead;
+                this.head = head;
+                this.subhead = subhead;
             }
 
-            public string Head
-            { get { return heading; }
+            public string Heading
+            {
+                get { return head; }
+                set { head = value; }
             }
 
-            public string Subhead
-            {   get { return subheading; }
-                set { subheading = value; } }
+            public string Subheading
+            {   get { return subhead; }
+                set { subhead = value; } }
         }
 
         public class BrowseItems
         {
-            public string heading { get; set; }
-            public string subheading { get; set; }
+            private string head;
+            private string subhead;
+
+            public BrowseItems(string head, string subhead)
+            {
+                this.head = head;
+                this.subhead = subhead;
+            }
+
+            public string Heading
+            {
+                get { return head; }
+                set { head = value; }
+            }
+
+            public string Subheading
+            {
+                get { return subhead; }
+                set { subhead = value; }
+            }
         }
 
         public class EditItem
         {
-            public string heading { get; set; }
-            public string subheading { get; set; }
+            private string head;
+            private string subhead;
+
+            public EditItem(string head, string subhead)
+            {
+                this.head = head;
+                this.subhead = subhead;
+            }
+
+            public string Heading
+            {
+                get { return head; }
+                set { head = value; }
+            }
+
+            public string Subheading
+            {
+                get { return subhead; }
+                set { subhead = value; }
+            }
         }
 
         public class Prompts
@@ -52,8 +90,26 @@ namespace consoleApp.Commands
 
         public class RemoveItem
         {
-            public string heading { get; set; }
-            public string subheading { get; set; }
+            private string head;
+            private string subhead;
+
+            public RemoveItem(string head, string subhead)
+            {
+                this.head = head;
+                this.subhead = subhead;
+            }
+
+            public string Heading
+            {
+                get { return head; }
+                set { head = value; }
+            }
+
+            public string Subheading
+            {
+                get { return subhead; }
+                set { subhead = value; }
+            }
         }
 
         public class Root
@@ -63,58 +119,47 @@ namespace consoleApp.Commands
 
         public void Run()
         {
-            var frameBodySpace = new FrameBodySpace();
-
             // Deserialize JSON file
 
-            var json = File.ReadAllText("/Users/home/inv-mgmt/consoleApp/Commands/prompts.json");
+            var json = File.ReadAllText(path: "prompts.json");
 
             var roots = JsonConvert.DeserializeObject<List<Root>>(json);
-
-            List<AddItem> addItems = JsonConvert.DeserializeObject<List<AddItem>>(json);
 
 
             // Use Reflection
 
             string strmsg = string.Empty;
-            foreach (var el in addItems)
+            foreach (var r in roots)
             {
-                GetPropertyValues(el);
-                Console.WriteLine(strmsg);
+                GetPropertyValues(r.prompts.addItem);
+                // Console.WriteLine(strmsg);
+
             }
-
-            //foreach (AddItem el in addItems)
-            //{
-            //    var charFreq = el.heading.Count();
-            //    int multipler = 69;
-            //    int numSpaces = multipler - charFreq;
-            //    string space = new string(' ', numSpaces);
-            //    Console.WriteLine($"│    {el.heading}" + $"{space}|");
-            //    frameBodySpace.Run();
-            //    Console.WriteLine($"│    {el.subheading}" + $"{space}|");
-            //    frameBodySpace.Run();
-            //}
-
-            //foreach (Root el in roots)
-            //{
-            //    // Find and return any string in el.prompts
-
-
-            //}
         }
 
         private static void GetPropertyValues(AddItem el)
         {
+            int leftSpaces = 4;
+            string leftPadding = new string(' ', leftSpaces);
+
             Type type = el.GetType();
-            Console.WriteLine("Type is: {0}", type.Name);
+            //Console.WriteLine("Type is: {0}", type.Name);
+
             PropertyInfo[] props = type.GetProperties();
-            Console.WriteLine("Properties (N = {0}):", props.Length);
+            //Console.WriteLine("Properties (N = {0}):", props.Length);
+
             foreach (var prop in props)
-                if (prop.GetIndexParameters().Length == 0)
-                    Console.WriteLine("{0} ({1}): {2}", prop.Name, prop.PropertyType.Name, prop.GetValue(el));
-                else
-                    Console.WriteLine("{0} ({1}): <Indexed>", prop.Name, prop.PropertyType.Name);
-            //****  Not Getting Value returned for prop.GetValue(el) ****;
+            {
+                var frameBodySpace = new FrameBodySpace();
+                var propStr = prop.GetValue(el).ToString();
+                var charFreq = propStr.Length;
+                int multipler = 69;
+                int rightSpaces = multipler - charFreq;
+                string rightPadding = new string(' ', rightSpaces);
+                Console.WriteLine($"|{leftPadding}{prop.GetValue(el)}{rightPadding}|");
+                frameBodySpace.Run();
+            }
+
         }
     }
 }
