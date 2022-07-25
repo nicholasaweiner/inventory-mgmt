@@ -1,0 +1,5 @@
+/Users/home/inv-mgmt/console-app/obj/Debug/net5.0/console-app.csproj.AssemblyReference.cache
+/Users/home/inv-mgmt/console-app/obj/Debug/net5.0/console-app.GeneratedMSBuildEditorConfig.editorconfig
+/Users/home/inv-mgmt/console-app/obj/Debug/net5.0/console-app.AssemblyInfoInputs.cache
+/Users/home/inv-mgmt/console-app/obj/Debug/net5.0/console-app.AssemblyInfo.cs
+/Users/home/inv-mgmt/console-app/obj/Debug/net5.0/console-app.csproj.CoreCompileInputs.cache

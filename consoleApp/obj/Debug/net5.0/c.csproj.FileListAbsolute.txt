@@ -1,0 +1,16 @@
+/Users/home/inv-mgmt/console-app/obj/Debug/net5.0/c.csproj.AssemblyReference.cache
+/Users/home/inv-mgmt/console-app/obj/Debug/net5.0/c.GeneratedMSBuildEditorConfig.editorconfig
+/Users/home/inv-mgmt/console-app/obj/Debug/net5.0/c.AssemblyInfoInputs.cache
+/Users/home/inv-mgmt/console-app/obj/Debug/net5.0/c.AssemblyInfo.cs
+/Users/home/inv-mgmt/console-app/obj/Debug/net5.0/c.csproj.CoreCompileInputs.cache
+/Users/home/inv-mgmt/console-app/bin/Debug/net5.0/c
+/Users/home/inv-mgmt/console-app/bin/Debug/net5.0/c.deps.json
+/Users/home/inv-mgmt/console-app/bin/Debug/net5.0/c.runtimeconfig.json
+/Users/home/inv-mgmt/console-app/bin/Debug/net5.0/c.runtimeconfig.dev.json
+/Users/home/inv-mgmt/console-app/bin/Debug/net5.0/c.dll
+/Users/home/inv-mgmt/console-app/bin/Debug/net5.0/c.pdb
+/Users/home/inv-mgmt/console-app/obj/Debug/net5.0/c.dll
+/Users/home/inv-mgmt/console-app/obj/Debug/net5.0/refint/c.dll
+/Users/home/inv-mgmt/console-app/obj/Debug/net5.0/c.pdb
+/Users/home/inv-mgmt/console-app/obj/Debug/net5.0/c.genruntimeconfig.cache
+/Users/home/inv-mgmt/console-app/obj/Debug/net5.0/ref/c.dll
