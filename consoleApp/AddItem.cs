@@ -22,7 +22,7 @@ namespace consoleApp
             frameHeader.Run();
 
             // Application Frame - Add Item Body
-            applicationCommands.Run();
+            applicationCommands.AddItemCommands();
 
             // Item Data
 

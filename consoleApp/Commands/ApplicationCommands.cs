@@ -117,7 +117,7 @@ namespace consoleApp.Commands
             public Prompts prompts { get; set; }
         }
 
-        public void Run()
+        public void AddItemCommands()
         {
             // Deserialize JSON file
 
@@ -159,7 +159,6 @@ namespace consoleApp.Commands
                 Console.WriteLine($"|{leftPadding}{prop.GetValue(el)}{rightPadding}|");
                 frameBodySpace.Run();
             }
-
         }
     }
 }
