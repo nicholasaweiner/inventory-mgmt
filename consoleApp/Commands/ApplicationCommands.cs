@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
@@ -10,139 +9,80 @@ namespace consoleApp.Commands
 {
     class ApplicationCommands
     {
-        public class AddItem
-        {
-            private string head;
-            private string subhead;
-
-            public AddItem(string head, string subhead)
-            {
-                this.head = head;
-                this.subhead = subhead;
-            }
-
-            public string Heading
-            {
-                get { return head; }
-                set { head = value; }
-            }
-
-            public string Subheading
-            {   get { return subhead; }
-                set { subhead = value; } }
-        }
-
-        public class BrowseItems
-        {
-            private string head;
-            private string subhead;
-
-            public BrowseItems(string head, string subhead)
-            {
-                this.head = head;
-                this.subhead = subhead;
-            }
-
-            public string Heading
-            {
-                get { return head; }
-                set { head = value; }
-            }
-
-            public string Subheading
-            {
-                get { return subhead; }
-                set { subhead = value; }
-            }
-        }
-
-        public class EditItem
-        {
-            private string head;
-            private string subhead;
-
-            public EditItem(string head, string subhead)
-            {
-                this.head = head;
-                this.subhead = subhead;
-            }
-
-            public string Heading
-            {
-                get { return head; }
-                set { head = value; }
-            }
-
-            public string Subheading
-            {
-                get { return subhead; }
-                set { subhead = value; }
-            }
-        }
-
-        public class Prompts
-        {
-            public AddItem addItem { get; set; }
-            public EditItem editItem { get; set; }
-            public RemoveItem removeItem { get; set; }
-            public BrowseItems browseItems { get; set; }
-        }
-
-        public class RemoveItem
-        {
-            private string head;
-            private string subhead;
-
-            public RemoveItem(string head, string subhead)
-            {
-                this.head = head;
-                this.subhead = subhead;
-            }
-
-            public string Heading
-            {
-                get { return head; }
-                set { head = value; }
-            }
-
-            public string Subheading
-            {
-                get { return subhead; }
-                set { subhead = value; }
-            }
-        }
-
-        public class Root
-        {
-            public Prompts prompts { get; set; }
-        }
-
         public void AddItemCommands()
         {
             // Deserialize JSON file
 
             var json = File.ReadAllText(path: "prompts.json");
 
-            var roots = JsonConvert.DeserializeObject<List<Root>>(json);
-
+            var prompts = JsonConvert.DeserializeObject<List<Prompts>>(json);
 
             // Use Reflection
 
             string strmsg = string.Empty;
-            foreach (var r in roots)
-            {
-                GetPropertyValues(r.prompts.addItem);
-                // Console.WriteLine(strmsg);
 
-            }
+                Prompts p = prompts[0];
+                GetPropertyValues(p);
+                // Console.WriteLine(strmsg);
         }
 
-        private static void GetPropertyValues(AddItem el)
+        public void EditItemCommands()
+        {
+            // Deserialize JSON file
+
+            var json = File.ReadAllText(path: "prompts.json");
+
+            var prompts = JsonConvert.DeserializeObject<List<Prompts>>(json);
+
+            // Use Reflection
+
+            string strmsg = string.Empty;
+
+            Prompts p = prompts[1];
+            GetPropertyValues(p);
+            // Console.WriteLine(strmsg);
+        }
+
+        public void RemoveItemCommands()
+        {
+            // Deserialize JSON file
+
+            var json = File.ReadAllText(path: "prompts.json");
+
+            var prompts = JsonConvert.DeserializeObject<List<Prompts>>(json);
+
+            // Use Reflection
+
+            string strmsg = string.Empty;
+
+            Prompts p = prompts[2];
+            GetPropertyValues(p);
+            // Console.WriteLine(strmsg);
+        }
+
+        public void BrowseItemsCommands()
+        {
+            // Deserialize JSON file
+
+            var json = File.ReadAllText(path: "prompts.json");
+
+            var prompts = JsonConvert.DeserializeObject<List<Prompts>>(json);
+
+            // Use Reflection
+
+            string strmsg = string.Empty;
+
+            Prompts p = prompts[3];
+            GetPropertyValues(p);
+            // Console.WriteLine(strmsg);
+        }
+
+        private static void GetPropertyValues(Prompts p)
         {
             int leftSpaces = 4;
             string leftPadding = new string(' ', leftSpaces);
 
-            Type type = el.GetType();
+            Type type = p.GetType();
             //Console.WriteLine("Type is: {0}", type.Name);
 
             PropertyInfo[] props = type.GetProperties();
@@ -151,14 +91,54 @@ namespace consoleApp.Commands
             foreach (var prop in props)
             {
                 var frameBodySpace = new FrameBodySpace();
-                var propStr = prop.GetValue(el).ToString();
+                var propStr = prop.GetValue(p).ToString();
                 var charFreq = propStr.Length;
                 int multipler = 69;
                 int rightSpaces = multipler - charFreq;
                 string rightPadding = new string(' ', rightSpaces);
-                Console.WriteLine($"|{leftPadding}{prop.GetValue(el)}{rightPadding}|");
+                Console.WriteLine($"|{leftPadding}{prop.GetValue(p)}{rightPadding}|");
                 frameBodySpace.Run();
             }
+        }
+
+        public void AddItemType()
+        {
+
+            int leftSpaces = 4;
+            string leftPadding = new string(' ', leftSpaces);
+
+            // Deserialize JSON file
+
+            var json = File.ReadAllText(path: "itemType.json");
+
+            var itemTypes = JsonConvert.DeserializeObject<List<ItemType>>(json);
+
+            foreach (var el in itemTypes)
+            {
+                var charFreq = el.itemType.Length;
+                int multipler = 65;
+                int rightSpaces = multipler - charFreq;
+                string rightPadding = new string(' ', rightSpaces);
+                Console.WriteLine($"|{leftPadding}{el.id} - {el.itemType}{rightPadding}|");
+            }
+
+        }
+
+        public class ItemType
+        {
+            public int id { get; set; }
+            public string itemType { get; set; }
+        }
+
+        public class Prompts
+        {
+            public string heading { get; set; }
+            public string subheading { get; set; }
+        }
+
+        public class Root
+        {
+            public Prompts prompts { get; set; }
         }
     }
 }

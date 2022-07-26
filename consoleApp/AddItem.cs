@@ -24,34 +24,15 @@ namespace consoleApp
             // Application Frame - Add Item Body
             applicationCommands.AddItemCommands();
 
-            // Item Data
+            // Item Types
+            applicationCommands.AddItemType();
 
-            var items = new List<Item>()
-            {
-                new Item(){ Id = 1, ItemType="Cable" },
-                new Item(){ Id = 2, ItemType="Adapter" },
-                new Item(){ Id = 3, ItemType="Misc. Peripheral" },
-                new Item(){ Id = 4, ItemType="Device" }
-            };
-
-            // Data Display
-
-            foreach (var el in items)
-            {
-                var charFreq = el.ItemType.Count();
-                int multipler = 65;
-                int rightSpaces = multipler - charFreq;
-                string rightPadding = new string(' ', rightSpaces);
-
-
-                Console.WriteLine($"│{leftPadding}{el.Id} - {el.ItemType}{rightPadding}|");
-            }
-
+            
             // Frame Body Space
             frameBodySpace.Run();
 
             // Frame Return to Main Menu 
-            Console.WriteLine($"│{leftPadding}{ Convert.ToInt32(items.Count) + 1} - Return to Main Menu                                              |");
+            // Console.WriteLine($"│{leftPadding}{ Convert.ToInt32(items.Count) + 1} - Return to Main Menu                                              |");
 
 
             // Default Application Frame Footer
