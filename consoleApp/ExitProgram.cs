@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using consoleApp.AppFrame;
 
 namespace consoleApp
 {
@@ -14,10 +15,12 @@ namespace consoleApp
 
             if ((userReturnInput == "y") || (userReturnInput == "yes"))
             {
-                // *** Use Timer Here for Console Clear
 
+                System.Threading.Thread.Sleep(2000);
                 Console.Clear();
+
                 var mainMenuReturn = new MainMenuReturn();
+
                 mainMenuReturn.MainMenu();
             }
             else
@@ -29,15 +32,16 @@ namespace consoleApp
 
                 if ((userQuitInput == "y") || (userQuitInput == "yes"))
                 {
+
                     Environment.Exit(0);
 
                 }
                 else
                 {
-                    // *** Use Timer Here for Console Clear
-
-                    Console.Clear();
                     Console.WriteLine("Returning to Main Menu...");
+                    System.Threading.Thread.Sleep(2000);
+                    Console.Clear();
+
                     var mainMenuReturn = new MainMenuReturn();
                     mainMenuReturn.MainMenu();
                 }
