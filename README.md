@@ -4,7 +4,7 @@
 ## Changelog - v. 0.0.1
 ### Code Louisville Software Development Pathway Course 1 - Feature List
 - Implement a “master loop” console application where the user can repeatedly enter commands/perform actions, including choosing to exit the program
--- Example: ExitProgram.cs & MainMenuReturn.cs
+  - Example: ExitProgram.cs & MainMenuReturn.cs
 
 - Create an additional class which inherits one or more properties from its parent
   - Example: program.cs (Line 9)
