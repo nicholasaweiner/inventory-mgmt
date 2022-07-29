@@ -75,30 +75,13 @@ namespace consoleApp
             var itemName = Console.ReadLine().ToString();
 
             Console.Write($"\r\nEnter {strConvertedInput.ToLower()}'s current location: ");
+            var itemLocation = Console.ReadLine().ToString();
 
-
-            var itemLocation = Console.ReadLine().ToString();;
             Console.Write($"\r\nEnter {strConvertedInput.ToLower()}'s estimated value: $");
             var itemValue = Console.ReadLine();
-            if (itemValue.Equals(itemValue))
-            {
-                System.Threading.Thread.Sleep(2000);
-                Console.Clear();
-                Console.WriteLine($"{strConvertedInput} was successfully entered into inventory.");
-                Console.WriteLine($"Entry ID: \"{UUID}\" ");
-                var exit = new ExitProgram();
-                exit.Run();
-            }
-            else
-            {
-                Console.Clear();
-                var invalidUserInput = new ExitProgram();
-                invalidUserInput.Run();
 
-            }
-
-            Console.Clear();
-
+            Console.WriteLine($"{strConvertedInput} was successfully entered into inventory.");
+            Console.WriteLine($"Entry ID: \"{UUID}\" ");
 
             UserItemData userItemData = new()
             {
@@ -111,20 +94,23 @@ namespace consoleApp
 
             };
 
-
             // serialize JSON to a string and then write string to a file
             File.WriteAllText("userItemData.json", JsonConvert.SerializeObject(userItemData));
 
             //open file stream
 
             using StreamWriter file = File.CreateText(path: "userItemData.json");
-            JsonSerializer serializer = new JsonSerializer();
+            JsonSerializer serializer = new();
             //serialize object directly into file stream
             serializer.Serialize(file, userItemData);
+
+            System.Threading.Thread.Sleep(3000);
+            Console.Clear();
+            var exit = new ExitProgram();
+            exit.Run();
+
         }
     }
-
-
 
         public class ItemType
         {
