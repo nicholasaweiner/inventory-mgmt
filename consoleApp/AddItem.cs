@@ -52,7 +52,7 @@ namespace consoleApp
             bool containsId = itemTypes.Any(p => p.id.ToString() == input);
             bool containsItemType = itemTypes.Any(p => p.itemType.ToLower() == input);
 
-            if ((!containsId) || (!containsItemType))
+            if ((!containsId) && (!containsItemType))
             {
                 Console.Clear();
                 Console.WriteLine("Invalid Input.");
