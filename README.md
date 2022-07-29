@@ -7,8 +7,6 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
-- `AddItem.cs`
-  - Fix serialize/write to `userItemData.json`
 - `EditItem.cs`
   - Select item using short GUID or select from list of items attributed to user's name or item's location
   - View and overwrite item details
@@ -18,6 +16,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   - Filter `userItemData.json` based on items attributed to user's name or item's location, or view all items
 - Web-Based User Interface (Blazor or Vue)
 
+## [0.0.2] - 07-29-2022
+### Fixed
+- `AddItem.cs`
+  - JSON Serializer before Exit.Run() with Console.Clear() and embarassing if(1=1) code block
 
 ## [0.0.1] - 07-27-2022
 ### Added
