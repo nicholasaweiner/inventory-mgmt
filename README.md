@@ -1,5 +1,5 @@
 # Inventory Management Application
-## In Partial Fulfillment of Code Louisville Software Development Course 1
+### In Partial Fulfillment of Code Louisville Software Development Course 1
 
 # Changelog 
 All notable changes to this project will be documented in this file.
