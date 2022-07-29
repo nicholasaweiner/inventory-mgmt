@@ -122,6 +122,13 @@ namespace consoleApp.Commands
                 Console.WriteLine($"|{leftPadding}{el.id} - {el.itemType}{rightPadding}|");
             }
 
+            var frameBodySpace = new FrameBodySpace();
+            var itemTypesLengthPlusOne = itemTypes.Count + 1;
+            int multiplerB = 73;
+            int rightSpacesB = multiplerB - (leftSpaces + itemTypesLengthPlusOne.ToString().Length + " - Return to Main Menu".Length);
+            string rightPaddingB = new string(' ', rightSpacesB);
+            frameBodySpace.Run();
+            Console.WriteLine($"|{leftPadding}{itemTypesLengthPlusOne} - Return to Main Menu{rightPaddingB}|");
         }
 
         public class ItemType

@@ -6,7 +6,7 @@ namespace consoleApp
     {
         public void Run()
         {
-            Console.Write("Would you like to return to Main Menu? (Enter Y / N)");
+            Console.Write("Would you like to return to Main Menu? (Enter Y / N) ");
 
             // User Return to Main Menu Input
             var userReturnInput = Console.ReadLine().ToLower();

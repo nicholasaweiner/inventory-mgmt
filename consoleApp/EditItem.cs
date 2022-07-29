@@ -5,8 +5,10 @@ namespace consoleApp
     {
         public void Run()
         {
-            Console.Write("Enter the string you want to modify: ");
-            Console.ReadLine();
+            Console.WriteLine("Edit Item functionality to be added. Please check back soon.");
+            var exit = new ExitProgram();
+            exit.Run();
+
         }
     }
 }

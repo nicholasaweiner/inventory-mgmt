@@ -52,12 +52,23 @@ namespace consoleApp
             bool containsId = itemTypes.Any(p => p.id.ToString() == input);
             bool containsItemType = itemTypes.Any(p => p.itemType.ToLower() == input);
 
-            if ((!containsId) && (!containsItemType))
+            if (input == (itemTypes.Count + 1).ToString())
+            {
+                Console.Clear();
+                Console.WriteLine("Returning to Main Menu...");
+                System.Threading.Thread.Sleep(2000);
+                Console.Clear();
+                var returnMainMenu = new MainMenuReturn();
+                returnMainMenu.MainMenu();
+
+            }
+            else if ((!containsId) && (!containsItemType))
             {
                 Console.Clear();
                 Console.WriteLine("Invalid Input.");
                 var invalidUserInput = new ExitProgram();
                 invalidUserInput.Run();
+
             }
 
             Console.Write("\r\nWhat is your name? ");
