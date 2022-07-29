@@ -17,6 +17,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Web-Based User Interface (Blazor or Vue)
 
 ## [0.0.2] - 07-29-2022
+
+### Added
+- Return to Main Menu method for `EditItem.cs` , `RemoveItem.cs` and `BrowseItems.cs`
+
+### Changed
+- `AddItem.cs`
+  - Returning to Main Menu feature
+  
 ### Fixed
 - `AddItem.cs`
   - JSON Serializer before Exit.Run() with Console.Clear()
