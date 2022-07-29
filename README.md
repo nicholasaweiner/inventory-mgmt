@@ -19,7 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [0.0.2] - 07-29-2022
 ### Fixed
 - `AddItem.cs`
-  - JSON Serializer before Exit.Run() with Console.Clear() and embarassing if(1=1) code block
+  - JSON Serializer before Exit.Run() with Console.Clear()
 
 ## [0.0.1] - 07-27-2022
 ### Added
