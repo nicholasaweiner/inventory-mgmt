@@ -14,7 +14,7 @@ namespace consoleApp
     {
         public void Run()
         {
-            
+            var frameHeader = new FrameHeader();
             var frameBodySpace = new FrameBodySpace();
             var frameFooter = new FrameFooter();
             var applicationCommands = new ApplicationCommands();
@@ -25,6 +25,8 @@ namespace consoleApp
             var json = File.ReadAllText(path: "itemType.json");
             var itemTypes = JsonConvert.DeserializeObject<List<ItemType>>(json);
 
+            // Frame Header
+            frameHeader.BlankHeader();
 
             // Application Frame - Add Item Body
             applicationCommands.AddItemCommands();
@@ -40,7 +42,6 @@ namespace consoleApp
             frameFooter.Run();
 
 
-
             Console.Write("\r\nSelect an option: ");
             var input = Console.ReadLine().ToLower();
 
@@ -51,124 +52,79 @@ namespace consoleApp
             bool containsId = itemTypes.Any(p => p.id.ToString() == input);
             bool containsItemType = itemTypes.Any(p => p.itemType.ToLower() == input);
 
-            if (containsId)
-            { 
-                var convertedInput = from iT in itemTypes
-                                     where iT.id.ToString() == input
-                                     select iT.itemType;
-                var strConvertedInput = string.Join(",", convertedInput.ToArray());
-
-
-                Console.Write("\r\nWhat is your name? ");
-                var userName = Console.ReadLine().ToString();
-
-
-                Console.Write($"\r\nEnter name of {strConvertedInput.ToLower()}: ");
-                var itemName = Console.ReadLine().ToString();
-                Console.Write($"\r\nEnter {strConvertedInput.ToLower()}'s current location: ");
-
-
-                var itemLocation = Console.ReadLine().ToString();;
-                Console.Write($"\r\nEnter {strConvertedInput.ToLower()}'s estimated value: $");
-                var itemValue = Console.ReadLine();
-                if (itemValue.Equals(itemValue))
-                {
-                    System.Threading.Thread.Sleep(2000);
-                    Console.Clear();
-                    Console.WriteLine($"{strConvertedInput} was successfully entered into inventory.");
-                    Console.WriteLine($"Entry ID: \"{UUID}\" ");
-                    var exit = new ExitProgram();
-                    exit.Run();
-                }
-
-
-                UserItemData userItemData = new UserItemData
-                {
-                    guid = UUID,
-                    userName = userName,
-                    itemType = strConvertedInput,
-                    itemName = itemName,
-                    itemLocation = itemLocation,
-                    itemValue = itemValue,
-
-                };
-
-
-                // serialize JSON to a string and then write string to a file
-                File.WriteAllText("userItemData.json", JsonConvert.SerializeObject(userItemData));
-
-                //open file stream
-                using (StreamWriter file = File.CreateText(path: "userItemData.json"))
-                {
-                    JsonSerializer serializer = new JsonSerializer();
-                    //serialize object directly into file stream
-                    serializer.Serialize(file, userItemData);
-                }
-            }
-
-            else if (containsItemType)
+            if ((!containsId) || (!containsItemType))
             {
-                var convertedInput = from iT in itemTypes
-                                        where iT.itemType.ToString().ToLower() == input
-                                        select iT.itemType;
-
-                var strConvertedInput = string.Join(",", convertedInput.ToArray());
-
-                Console.Write("\r\nWhat is your name? ");
-                var userName = Console.ReadLine().ToString();
-                Console.Write($"\r\nEnter name of {strConvertedInput.ToLower()}: ");
-
-
-                var itemName = Console.ReadLine().ToString();
-                Console.Write($"\r\nEnter {strConvertedInput.ToLower()}'s current location: ");
-
-
-                var itemLocation = Console.ReadLine().ToString(); ;
-                Console.Write($"\r\nEnter {strConvertedInput.ToLower()}'s estimated value: $");
-
-
-                var itemValue = Console.ReadLine();
-                if (itemValue.Equals(itemValue))
-                {
-                    System.Threading.Thread.Sleep(2000);
-                    Console.Clear();
-                    Console.WriteLine($"{strConvertedInput} was successfully entered into inventory.");
-                    Console.WriteLine($"Entry ID: \"{UUID}\" ");
-                    var exit = new ExitProgram();
-                    exit.Run();
-                }
-
-
-                UserItemData userItemData = new UserItemData
-                {
-                    guid = UUID,
-                    userName = userName,
-                    itemType = strConvertedInput,
-                    itemName = itemName,
-                    itemLocation = itemLocation,
-                    itemValue = itemValue,
-
-                };
-
-
-                // serialize JSON to a string and then write string to a file
-                File.WriteAllText("userItemData.json", JsonConvert.SerializeObject(userItemData));
-
-                //open file stream
-                using (StreamWriter file = File.CreateText(path: "userItemData.json"))
-                {
-                    JsonSerializer serializer = new JsonSerializer();
-                    //serialize object directly into file stream
-                    serializer.Serialize(file, userItemData);
-                }
-            }
-
-            else
-            {
+                Console.Clear();
+                Console.WriteLine("Invalid Input.");
                 var invalidUserInput = new ExitProgram();
                 invalidUserInput.Run();
             }
+
+            Console.Write("\r\nWhat is your name? ");
+            var userName = Console.ReadLine().ToString();
+
+
+            var convertedInput =    from iT in itemTypes
+                                    where (iT.id.ToString() == input) || (iT.itemType.ToString().ToLower() == input)
+                                    select iT.itemType;
+
+            var strConvertedInput = string.Join(",", convertedInput.ToArray());
+
+
+            Console.Write($"\r\nEnter name of {strConvertedInput.ToLower()}: ");
+            var itemName = Console.ReadLine().ToString();
+
+            Console.Write($"\r\nEnter {strConvertedInput.ToLower()}'s current location: ");
+
+
+            var itemLocation = Console.ReadLine().ToString();;
+            Console.Write($"\r\nEnter {strConvertedInput.ToLower()}'s estimated value: $");
+            var itemValue = Console.ReadLine();
+            if (itemValue.Equals(itemValue))
+            {
+                System.Threading.Thread.Sleep(2000);
+                Console.Clear();
+                Console.WriteLine($"{strConvertedInput} was successfully entered into inventory.");
+                Console.WriteLine($"Entry ID: \"{UUID}\" ");
+                var exit = new ExitProgram();
+                exit.Run();
+            }
+            else
+            {
+                Console.Clear();
+                var invalidUserInput = new ExitProgram();
+                invalidUserInput.Run();
+
+            }
+
+            Console.Clear();
+
+
+            UserItemData userItemData = new()
+            {
+                guid = UUID,
+                userName = userName,
+                itemType = strConvertedInput,
+                itemName = itemName,
+                itemLocation = itemLocation,
+                itemValue = itemValue,
+
+            };
+
+
+            // serialize JSON to a string and then write string to a file
+            File.WriteAllText("userItemData.json", JsonConvert.SerializeObject(userItemData));
+
+            //open file stream
+
+            using StreamWriter file = File.CreateText(path: "userItemData.json");
+            JsonSerializer serializer = new JsonSerializer();
+            //serialize object directly into file stream
+            serializer.Serialize(file, userItemData);
         }
+    }
+
+
 
         public class ItemType
         {
@@ -189,7 +145,5 @@ namespace consoleApp
 
     }
 
-
-}
 
 

@@ -7,6 +7,7 @@ namespace consoleApp
 	{
 		public void MainMenu()
 		{
+
             var frameHeader = new FrameHeader();
 
             // Default Application Frame - Header
@@ -56,10 +57,16 @@ namespace consoleApp
                     browse.Run();
                     break;
                 case "5":
+                    System.Threading.Thread.Sleep(1000);
+                    Console.Clear();
+
                     var exit = new ExitProgram();
                     exit.Run();
                     break;
                 default:
+                    System.Threading.Thread.Sleep(1000);
+                    Console.Clear();
+
                     var invalidUserInput = new ExitProgram();
                     invalidUserInput.Run();
                     break;
