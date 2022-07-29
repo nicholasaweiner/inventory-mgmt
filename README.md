@@ -3,6 +3,9 @@
 
 ## Changelog - v. 0.0.1
 ### Code Louisville Software Development Pathway Course 1 - Feature List
+
+Note: `EditItem.cs` , `RemoveItem.cs` and `BrowseItems.cs` are still in development as of 7/28/22. Will continue development on this project beyond CL project deadline.
+
 - Implement a “master loop” console application where the user can repeatedly enter commands/perform actions, including choosing to exit the program
   - Example: ExitProgram.cs & MainMenuReturn.cs
 
