@@ -1,4 +1,4 @@
-# Inventory Management App - C#
+# Inventory Management Application
 
 
 # Changelog 
