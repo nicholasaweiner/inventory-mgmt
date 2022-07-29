@@ -34,3 +34,4 @@
 /Users/home/inv-mgmt/consoleApp/obj/Debug/net5.0/consoleApp.pdb
 /Users/home/inv-mgmt/consoleApp/obj/Debug/net5.0/consoleApp.genruntimeconfig.cache
 /Users/home/inv-mgmt/consoleApp/obj/Debug/net5.0/ref/consoleApp.dll
+/Users/home/inv-mgmt/consoleApp/bin/Debug/net5.0/shortid.dll

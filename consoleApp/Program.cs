@@ -1,6 +1,4 @@
-﻿using consoleApp.AppFrame;
-
-namespace consoleApp
+﻿namespace consoleApp
 {
     class Program
     {

@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "8hCeag+c0DXVll+OzWJkb8KXITQsslr5uixwGjmoRLA+mkUwHrx6//K51MPQ6geLfgpuPttt4iQUCgxHq0Iw5A==",
+  "dgSpecHash": "muwCSmsFXwIsZBA2LsZa9X0nigK0Czp3I2ilDeK7VUy2apXItizhxr80wZ49STLTn8RQeus1XT+UR+4S/RG06w==",
   "success": true,
   "projectFilePath": "/Users/home/inv-mgmt/consoleApp/consoleApp.csproj",
   "expectedPackageFiles": [
-    "/Users/home/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512"
+    "/Users/home/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512",
+    "/Users/home/.nuget/packages/shortid/4.0.0/shortid.4.0.0.nupkg.sha512"
   ],
   "logs": []
 }
